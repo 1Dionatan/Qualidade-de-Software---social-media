@@ -32,6 +32,10 @@ test.describe('API — Posts e Curtidas', () => {
 
     // Garante que a lista não veio vazia (possui mais de 0 posts)
     expect(body.posts.length).toBeGreaterThan(0);
+
+    // Cada post deve trazer as reações recebidas da API DummyJSON.
+    expect(body.posts[0].likes).toEqual(expect.any(Number));
+    expect(body.posts[0].dislikes).toEqual(expect.any(Number));
   });
 
   // ─────────────────────────────────────────────────────────

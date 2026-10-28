@@ -26,6 +26,8 @@ export interface Post {
   id: number;
   title: string;
   body: string;
+  likes: number;
+  dislikes: number;
   liked: boolean;
 }
 
