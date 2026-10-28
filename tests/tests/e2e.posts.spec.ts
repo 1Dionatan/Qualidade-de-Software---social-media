@@ -116,4 +116,12 @@ test.describe('Fluxo de Curtida em Posts', () => {
     // Comprova que os posts da API DummyJSON/Backend foram carregados com sucesso
     expect(totalPosts).toBeGreaterThan(0);
   });
+
+  test('deve exibir likes e dislikes em cada post da Home', async ({ page }) => {
+    await page.goto('/');
+
+    const primeiroPost = page.getByRole('listitem').first();
+    await expect(primeiroPost).toBeVisible({ timeout: 10000 });
+    await expect(primeiroPost.getByLabel(/Reações: \d+ likes e \d+ dislikes/)).toBeVisible();
+  });
 });
